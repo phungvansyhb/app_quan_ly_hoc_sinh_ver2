@@ -13,7 +13,7 @@ public class insertDao {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1,st.getStudentName());
 			pst.setInt(2, st.getClassID());
-			pst.setDouble(3, st.getmathPoint());
+			pst.setDouble(3, st.getMathPoint());
 			pst.setDouble(4, st.getPhysicPoint());
 			pst.setDouble(5, st.getChemPoint());
 		if(pst.executeUpdate()!=0) return true;

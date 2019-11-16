@@ -39,25 +39,23 @@ public class FindStudentController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("name");
-		int idclass = Integer.parseInt(request.getParameter("dropdown_class"));
+		
 		
 		ArrayList<student>list = new ArrayList<student>();
 		ResultSet rs = null;
 		try {
-			rs = findDao.findStudent(Dbconnect.conn(),name,idclass);
+			rs = findDao.findStudent(Dbconnect.conn(),name);
 			while(rs.next()) {
 				student st = new student();
-				st.setStudentId(rs.getInt("idStudent"));
 				st.setStudentName(rs.getString("studentName"));
+				st.setClassName(rs.getString("className"));
 				st.setMathPoint(rs.getDouble("mathpoint"));
 				st.setPhysicPoint(rs.getDouble("physicpoint"));
 				st.setChemPoint(rs.getDouble("chempoint"));
 				list.add(st);
 			}
 			request.setAttribute("listResult", list);	
-			List<classroom> listclass = classDao.getlistclass(Dbconnect.conn());	
-			request.setAttribute("listclass", listclass);
-			RequestDispatcher rdp = request.getRequestDispatcher("/WEB-INF/view/home.jsp");
+			RequestDispatcher rdp = request.getRequestDispatcher("/WEB-INF/view/Result.jsp");
 			rdp.forward(request, response);	
 			
 		} catch (ClassNotFoundException | SQLException e) {

@@ -4,7 +4,7 @@
 }
 
 .col-xs-6.col-sm-6.col-md-6.col-lg-6 {
-    text-align: center;
+  	
     border: 1px solid;
     height: 700px;
 }
@@ -28,4 +28,8 @@ h3 {
 .ms{
 	color:red;
 	font-style: italic;
+}
+table tr td{
+	width: 150px;
+	border: 1px solid black;
 }

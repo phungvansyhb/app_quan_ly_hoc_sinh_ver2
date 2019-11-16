@@ -30,16 +30,16 @@
 				<h3><%=(request.getAttribute("masseger") != null) ? request.getAttribute("masseger") : " "%></h3>
 				<form action="AddstudentController" name="form" method="post"  onsubmit="return validate()" >
 					<p>Nhập tên :</p>
-					<input type="text" name="name" placeholder="" onkeyup="validate()"><p class="ms" id="message1"></p>
+					<input type="text" name="name" placeholder="" onkeyup="validate()"><span class="ms" id="message1"></span>
 					<br>					
 					<p>Nhập điểm toán:</p>
-					<input type="text" name="Point1" onkeyup="validate()"><p class="ms" id="message2"></p>
+					<input type="text" name="Point1" onkeyup="validate()"><span class="ms" id="message2"></span>
 					<br>			
 					<p>Nhập điểm lý :</p>
-					<input type="text" name="Point2"onkeyup="validate()"><p class="ms" id="message3"></p>
+					<input type="text" name="Point2"onkeyup="validate()"><span class="ms" id="message3"></span>
 					<br>
 					<p>Nhập điểm hóa :</p>
-					<input type="text" name="Point3"onkeyup="validate()"><p class="ms" id="message4"></p>
+					<input type="text" name="Point3"onkeyup="validate()"><span class="ms" id="message4"></span>
 					<br> 
 					Chọn lớp: <select
 						name="dropdown_class">
@@ -52,29 +52,21 @@
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 				<h3>Tìm kiếm học sinh</h3>
 
-				<form action="FindStudentController" method="post" accept-charset="utf-8">
+				<form  name="formsearch"  accept-charset="utf-8">
 					<input type="text" name="name" placeholder="nhap ten hoc sinh...">
-					<select name="dropdown_class">
+					<!--
+					<select name="idclass">
 						<c:forEach items="${listclass}" var="cl">
 							<option value="${cl.classId}">${cl.className}</option>
 						</c:forEach>
-					</select> <input type="submit" name="submit" value="tìm kiếm">
+					</select> -->
+					<input type="button" name="submit" value="tìm kiếm" onclick="ajax()" >
 				</form>
-
-				<table>
-					<tr>
-						<c:forEach items="${listResult}" var="st">
-							<td>${st.getstudentId}</td>
-							<td>${st.getStudentName }</td>
-							<td>${st.getmathPoint }</td>
-							<td>${st.getPhysicPoint }</td>
-							<td>${st.getChemPoint }</td>
-							
-						</c:forEach>
-
-					</tr>
-
-				</table>
+				<br>
+				<br>
+				<div id ="result"></div>
+				<div id="message"></div>
+				
 			</div>
 	
 	</div>

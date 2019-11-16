@@ -31,5 +31,34 @@ function validate(){
 	}else{
 		document.getElementById("message4").innerHTML="";
 	}
-	
 }
+	function ajax(){
+		var xhttp ;
+		var name = document.formsearch.name.value;
+		
+		var url ="FindStudentController?name="+name;
+	console.log(url);
+		if(window.XMLHttpRequest){
+			xhttp = new XMLHttpRequest();
+			// cho trinh duyet cao cap nhu chrome , IE7...
+		}
+		else{
+			xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			//cho ban cu IE6 ,IE5,...
+		}
+		xhttp.onreadystatechange= function(){
+			if (xhttp.readyState == 4) {
+				var data = xhttp.responseText;
+				document.getElementById("result").innerHTML=data;
+			}else{
+				
+				document.getElementById("result").innerHTML="";
+			}
+			
+			
+		}
+		xhttp.open("POST",url,true);
+		xhttp.send();
+	}
+		
+
